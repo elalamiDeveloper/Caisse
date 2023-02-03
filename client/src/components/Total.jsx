@@ -14,11 +14,11 @@ const TotalContainer = styled.div`
   }
 `;
 
-const Total = () => {
+const Total = ({ total }) => {
   return (
     <TotalContainer>
       <h2>Total:</h2>
-      <strong>200 €</strong>
+      <strong>{total} €</strong>
     </TotalContainer>
   );
 };

@@ -9,8 +9,8 @@ const BtnContainer = styled.button`
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 `;
 
-const Btn = ({ children }) => {
-  return <BtnContainer>{children}</BtnContainer>;
+const Btn = ({ children, onClick }) => {
+  return <BtnContainer onClick={onClick}>{children}</BtnContainer>;
 };
 
 export default Btn;

@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-import productsData from '../../data/Products.json';
 import { Btn } from './';
 
 const ListButtonsContainer = styled.ul`
@@ -35,15 +34,22 @@ const ListButtonsContainer = styled.ul`
   }
 `;
 
-console.log(productsData);
-
-const ListButtons = ({ onAddProductsHandler }) => {
+const ListButtons = ({ onAddProductsHandler, setProductsList }) => {
   const [inputValue, setInputValue] = useState('');
   const inputRef = useRef(null);
 
   useEffect(() => {
     inputRef.current.focus();
   }, []);
+
+  const onScanneHandler = (e) => {
+    inputRef.current.focus();
+  };
+
+  const onReinitialisationHandler = (e) => {
+    setProductsList([]);
+    inputRef.current.focus();
+  };
 
   const onChangeHandler = (e) => {
     setInputValue(e.target.value);
@@ -58,12 +64,23 @@ const ListButtons = ({ onAddProductsHandler }) => {
     setInputValue('');
   };
 
-  const BtnsValue = ['Ajouter des produits', 'Valider', 'Réinitialiser'];
+  const BtnsValue = ['Ajouter des produits', 'Valider', 'Clic pour Scanner'];
 
   return (
     <ListButtonsContainer>
       {BtnsValue.map((btn, i) => (
-        <Btn key={i}>{btn}</Btn>
+        <Btn
+          key={i}
+          onClick={
+            i === 2
+              ? onScanneHandler
+              : i === 1
+              ? onReinitialisationHandler
+              : null
+          }
+        >
+          {btn}
+        </Btn>
       ))}
       <form onSubmit={onSubmitHandler}>
         <input
@@ -73,7 +90,7 @@ const ListButtons = ({ onAddProductsHandler }) => {
           name="scannerValue"
           onChange={onChangeHandler}
           ref={inputRef}
-          placeholder="Scan Here..."
+          placeholder="Scan ici..."
         />
       </form>
     </ListButtonsContainer>

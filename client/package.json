@@ -13,11 +13,13 @@
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.6",
+    "convert-csv-to-json": "^1.5.0",
     "react": "^18.2.0",
     "react-barcode": "^1.4.6",
     "react-barcode-reader": "^0.0.2",
     "react-dom": "^18.2.0",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "uuid4": "^2.0.3"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

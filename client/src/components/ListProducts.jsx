@@ -27,11 +27,22 @@ const ListProductsContainer = styled.ul`
   }
 `;
 
-const ListProducts = ({ products }) => {
+const ListProducts = ({
+  products,
+  onRemoveProductsHandler,
+  onAddQuantityHandler,
+  onReduceQuantityHandler,
+}) => {
   return (
     <ListProductsContainer>
       {products.map((product) => (
-        <Product {...product}></Product>
+        <Product
+          key={product.id}
+          {...product}
+          onRemoveProductsHandler={onRemoveProductsHandler}
+          onAddQuantityHandler={onAddQuantityHandler}
+          onReduceQuantityHandler={onReduceQuantityHandler}
+        ></Product>
       ))}
     </ListProductsContainer>
   );

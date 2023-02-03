@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import styled from 'styled-components';
 import CloseIcon from '@mui/icons-material/Close';
 import NavigateBeforeIcon from '@mui/icons-material/NavigateBefore';
@@ -54,17 +55,55 @@ const ProductContainer = styled.li`
   }
 `;
 
-const Product = ({ nom, prix_vente, ean13 }) => {
+const Product = ({
+  nom,
+  prix_vente,
+  quantity,
+  id,
+  onRemoveProductsHandler,
+  onAddQuantityHandler,
+  onReduceQuantityHandler,
+}) => {
+  const closeRef = useRef(null);
+  const addRef = useRef(null);
+  const reduceRef = useRef(null);
+  console.log(nom);
+  console.log(nom?.includes('PROMO'));
+
+  const onClickCloseBtnHandler = () =>
+    onRemoveProductsHandler(closeRef.current.parentNode.id);
+
+  const onAddQuantity = () =>
+    onAddQuantityHandler(addRef.current.parentNode.parentNode.id);
+
+  const onReduceQuantity = () =>
+    onReduceQuantityHandler(reduceRef.current.parentNode.parentNode.id);
+
   return (
-    <ProductContainer>
+    <ProductContainer
+      id={id}
+      style={{ background: `${nom?.includes('PROMO') ? 'red' : ''}` }}
+    >
       <div className="number">
-        <NavigateBeforeIcon className="arrow-icon" />
-        <span>5</span>
-        <NavigateNextIcon className="arrow-icon" />
+        <NavigateBeforeIcon
+          className="arrow-icon"
+          ref={reduceRef}
+          onClick={onReduceQuantity}
+        />
+        <span>{quantity}</span>
+        <NavigateNextIcon
+          className="arrow-icon"
+          ref={addRef}
+          onClick={onAddQuantity}
+        />
       </div>
       <div className="product">{nom}</div>
       <div className="price">{prix_vente} €</div>
-      <CloseIcon className="close-icon" />
+      <CloseIcon
+        className="close-icon"
+        onClick={onClickCloseBtnHandler}
+        ref={closeRef}
+      />
     </ProductContainer>
   );
 };
