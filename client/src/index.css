@@ -11,6 +11,8 @@ html {
 }
 
 body {
+  padding: 5rem;
+  height: 100vh;
   background: #f75259;
   color: #333;
   font-family: 'Roboto', sans-serif;
@@ -21,4 +23,9 @@ button {
   border: none;
   cursor: pointer;
   color: inherit;
+}
+
+input {
+  outline: none;
+  border: none;
 }

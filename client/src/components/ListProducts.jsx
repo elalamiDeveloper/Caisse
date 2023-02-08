@@ -28,14 +28,14 @@ const ListProductsContainer = styled.ul`
 `;
 
 const ListProducts = ({
-  products,
+  productsList,
   onRemoveProductsHandler,
   onAddQuantityHandler,
   onReduceQuantityHandler,
 }) => {
   return (
     <ListProductsContainer>
-      {products.map((product) => (
+      {productsList.map((product) => (
         <Product
           key={product.id}
           {...product}

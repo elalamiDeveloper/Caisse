@@ -15,8 +15,6 @@ const ListButtonsContainer = styled.ul`
     text-align: center;
     padding: 1.5rem;
     border-radius: 0.5rem;
-    outline: none;
-    border: none;
     background: #f3c214;
     font-size: 2.2rem;
     font-weight: 700;
@@ -33,6 +31,8 @@ const ListButtonsContainer = styled.ul`
     }
   }
 `;
+
+const BtnsValue = ['Valider', 'Clic pour Scanner'];
 
 const ListButtons = ({ onAddProductsHandler, setProductsList }) => {
   const [inputValue, setInputValue] = useState('');
@@ -64,33 +64,26 @@ const ListButtons = ({ onAddProductsHandler, setProductsList }) => {
     setInputValue('');
   };
 
-  const BtnsValue = ['Ajouter des produits', 'Valider', 'Clic pour Scanner'];
-
   return (
     <ListButtonsContainer>
       {BtnsValue.map((btn, i) => (
         <Btn
           key={i}
-          onClick={
-            i === 2
-              ? onScanneHandler
-              : i === 1
-              ? onReinitialisationHandler
-              : null
-          }
+          onClick={i === 1 ? onScanneHandler : onReinitialisationHandler}
         >
           {btn}
         </Btn>
       ))}
+
       <form onSubmit={onSubmitHandler}>
         <input
-          className="input-value"
           type="text"
-          value={inputValue}
-          name="scannerValue"
-          onChange={onChangeHandler}
           ref={inputRef}
+          name="scannerValue"
+          value={inputValue}
           placeholder="Scan ici..."
+          className="input-value"
+          onChange={onChangeHandler}
         />
       </form>
     </ListButtonsContainer>

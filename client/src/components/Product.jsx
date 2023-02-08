@@ -67,8 +67,6 @@ const Product = ({
   const closeRef = useRef(null);
   const addRef = useRef(null);
   const reduceRef = useRef(null);
-  console.log(nom);
-  console.log(nom?.includes('PROMO'));
 
   const onClickCloseBtnHandler = () =>
     onRemoveProductsHandler(closeRef.current.parentNode.id);

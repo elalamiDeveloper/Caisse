@@ -6,8 +6,8 @@ import csvToJson from 'convert-csv-to-json';
 //   'utf8'
 // );
 
-let fileInputName = '../data/FICHIER CAISSE NATH MODIFIE 020223.csv';
-let fileOutputName = '../data/caisseData.json';
+let fileInputName = '../data/products.csv';
+let fileOutputName = '../data/products.json';
 
 csvToJson.generateJsonFileFromCsv(fileInputName, fileOutputName);
 
