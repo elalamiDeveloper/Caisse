@@ -80,7 +80,7 @@ const Product = ({
   return (
     <ProductContainer
       id={id}
-      style={{ background: `${nom?.includes('PROMO') ? 'red' : ''}` }}
+      style={{ background: `${nom?.includes('PROMO') ? '#f3c214' : ''}` }}
     >
       <div className="number">
         <NavigateBeforeIcon

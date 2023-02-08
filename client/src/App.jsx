@@ -7,15 +7,20 @@ import { ListButtons, ListProducts, Total } from './components';
 import PRODUCTS_DATA from '../data/newProducts.json';
 
 const AppContainer = styled.div`
-  height: calc(100vh - 10rem);
+  min-height: calc(100vh - 10rem);
   background: #f6f6f6;
   display: grid;
-  grid-template-columns: 80% 20%;
+  grid-template-columns: 1fr auto;
   grid-template-rows: 1fr auto;
   border-radius: 1rem;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
+  @media screen and (max-width: 1400px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto auto;
+  }
 `;
 
 const App = () => {

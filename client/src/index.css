@@ -18,6 +18,10 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+ul {
+  list-style: none;
+}
+
 button {
   outline: none;
   border: none;
